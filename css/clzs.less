@@ -10,6 +10,22 @@
     height: calc(100% - 65px*@p);
     margin-top: 10px *@p;
     box-sizing:border-box;
+    position:relative;
+    .clGaugeBox{
+      position:absolute;
+      width:100%;
+      top:50%;
+      transform:translateY(-50%);
+      .clGauge{
+        width:50%;
+        display:block !important;
+        margin:30px auto;
+        &:first-child{
+          margin-bottom:129px*@p;
+        }
+      }
+    }
+
   }
   .right {
     height:100%;

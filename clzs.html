@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="js/layui/css/layui.css">
     <link rel="stylesheet" href="css/iconfont/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="js/gauge/css/index.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/layui/layui.js"></script>
+    <script src="js/gauge/gauge.js"></script>
     <script src="js/common.js"></script>
 </head>
 <body class="layui-layout-body">
@@ -109,7 +111,10 @@
             <div class="left" style="float:left">
                 <div class="title">车辆总数</div>
                 <div class="chart">
-
+                    <div class="clGaugeBox">
+                        <div id="zscl" class="clGauge"></div>
+                        <div id="gzcl" class="clGauge"></div>
+                    </div>
                 </div>
             </div>
             <div class="right" style="float:left">
@@ -236,7 +241,22 @@
             height: $(".clsj").height(), //设置高度
             limit:10000
         });
-    })
+    });
+    var zscl=new Gauge("#zscl");//总数车辆
+    var gzcl=new Gauge("#gzcl");//故障车辆
+    //以下就是每次数据更新之后调用的函数
+    zscl.setOption({
+        title:"总数车辆",
+        unit:"辆",
+        percent:20,
+        number:33,
+    });
+    gzcl.setOption({
+        title:"故障车辆",
+        unit:"辆",
+        percent:40,
+        number:33,
+    });
 </script>
 </body>
 </html>

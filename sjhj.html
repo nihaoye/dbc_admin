@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="js/layui/css/layui.css">
     <link rel="stylesheet" href="css/iconfont/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="js/gauge/css/index.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/layui/layui.js"></script>
+    <script src="js/gauge/gauge.js"></script>
     <script src="js/common.js"></script>
     <script src="js/echarts/echarts.common.min.js"></script>
 </head>
@@ -131,7 +133,11 @@
             <div class="ss-chart clearfix" >
                 <div class="l-chart" style="float:left;">
                     <div class="title">实时统计</div>
-                    <div class="l-content"></div>
+                    <div class="l-content">
+                        <div id="drhj" class="ssGauge"></div>
+                        <div id="drsyz" class="ssGauge"></div>
+                        <div id="drysy" class="ssGauge"></div>
+                    </div>
                 </div>
                 <div class="r-chart" style="float:left;">
                     <div class="title">销售统计图</div>
@@ -290,6 +296,29 @@
         }]
     };
     $(function(){
+        //三个仪表盘
+        var drhj=new Gauge("#drhj");//当日合计
+        var drsyz=new Gauge("#drsyz");//当日使用中
+        var drysy=new Gauge("#drysy");//当日已使用
+        //以下三段就是每次数据更新之后调用的函数
+        drhj.setOption({
+            title:"当日合计",
+            unit:"辆",
+            percent:100,
+            number:66,
+        });
+        drsyz.setOption({
+            title:"当日使用中",
+            unit:"辆",
+            percent:20,
+            number:33,
+        });
+        drysy.setOption({
+            title:"当日已使用",
+            unit:"辆",
+            percent:40,
+            number:33,
+        });
         var rchart=echarts.init($(".r-chart .r-content")[0]);
         rchart.setOption(option);
         layui.use('laydate', function(){

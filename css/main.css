@@ -120,6 +120,21 @@ body {
   height: calc(100% - 65px*0.75);
   margin-top: 7.5px;
   box-sizing: border-box;
+  position: relative;
+}
+.clzs .chart .clGaugeBox {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.clzs .chart .clGaugeBox .clGauge {
+  width: 50%;
+  display: block !important;
+  margin: 30px auto;
+}
+.clzs .chart .clGaugeBox .clGauge:first-child {
+  margin-bottom: 96.75px;
 }
 .clzs .right {
   height: 100%;
@@ -688,6 +703,23 @@ body {
   height: 205.5px;
   width: 100%;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+.l-content {
+  box-sizing: border-box;
+  padding: 0 15px;
+  padding-top: 7.5px;
+  text-align: center;
+}
+.l-content .ssGauge {
+  display: inline-block;
+  width: 22.5%;
+  margin: auto 2%;
+}
+.l-content .ssGauge:first-child {
+  margin-left: 0;
+}
+.l-content .ssGauge:last-child {
+  margin-right: 0;
 }
 .layui-table-grid-down {
   display: none !important;
