@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>代步车财务</title>
+    <link rel="stylesheet" href="js/layui/css/layui.css">
+    <link rel="stylesheet" href="css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/layui/layui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/echarts/echarts.common.min.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <header class="layui-header dbc_header">
+        <div class="nowdate">2018/8/26(节假日)</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="topBanner layui-nav">
+            <img class="logo" src="image/logo.png"/>
+            <div class="sysSelectBox layui-nav-item">
+                <div class="sysSelect">
+                    代步车管理
+                    <span class="layui-nav-more layui-icon layui-icon-down"></span>
+                </div>
+                <dl class="layui-nav-child">
+                    <dd class="sysOption"><a href="#">代步车管理</a></dd>
+                    <dd class="sysOption"><a href="#">财务管理</a></dd>
+                </dl>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item userInfo">
+                锦绣中华
+                <span class="layui-nav-more layui-icon layui-icon-down"></span>
+                <dl class="layui-nav-child">
+                    <dd><a href="#">基本资料</a></dd>
+                    <dd><a href="#">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a class="logout" href="javascript:"><i class="icon iconfont icon-power"></i>退出</a></li>
+        </ul>
+    </header>
+    <aside class="layui-side aside">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-collapse" lay-accordion lay-filter="aside">
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-ry"></i>人员管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li class="active"><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-jl"></i>交易记录</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li class="active"><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-jq"></i>景区管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-fy"></i>费用管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-clgl"></i>车辆管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-wxngl"></i>维修管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main class="layui-body">
+        <div>
+            <div class="jgsz">
+                <div class="queryBox">
+                    <div class="label font-theme">车 型:</div>
+                    <ul class="selectGroup">
+                        <li class="item active">全部</li>
+                        <li class="item">单人车</li>
+                        <li class="item">双人车</li>
+                        <li class="item">三人车</li>
+                    </ul>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="label font-theme" style="float: none;">日  期:</div>
+                    <ul class="selectGroup">
+                        <li class="item active">今天</li>
+                        <li class="item">昨天</li>
+                        <li class="item">最近七天</li>
+                        <li class="item">最近三十天</li>
+                    </ul>
+                    <input class="input dateRange" id="dateRange" placeholder="选择日期"/>
+                    &nbsp;&nbsp;
+                    <button class="layui-btn layui-btn-sm btn-theme queryBtn">查询</button>
+                </div>
+            </div>
+            <div class="ss-chart clearfix" >
+                <div class="l-chart" style="float:left;">
+                    <div class="title">实时统计</div>
+                    <div class="l-content"></div>
+                </div>
+                <div class="r-chart" style="float:left;">
+                    <div class="title">销售统计图</div>
+                    <div class="r-content"></div>
+                </div>
+            </div>
+            <div class="s-data">
+                <div class="title">销售统计数据</div>
+                <div class="amount">
+                    <ul class="clearfix inlineBlock">
+                        <li style="float:left">
+                            <p>①预充金额（元）</p>
+                            <div class="shuju">20500,00</div>
+                        </li>
+                        <li style="float:left">
+                            <p>②退款金额</p>
+                            <div class="shuju">20500,00</div>
+                        </li>
+                        <li style="float:left">
+                            <p>③补缴金额</p>
+                            <div class="shuju">20500,00</div>
+                        </li>
+                        <li class="last" style="float:left">
+                            <p>④销售额(=①-②+③)（元）</p>
+                            <div class="shuju">20500,00</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="xstjTable">
+                    <table class="layui-table" lay-filter="xstj">
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'number'}">序号</th>
+                            <th lay-data="{field:'date'}">时间</th>
+                            <th lay-data="{field:'preCount'}">①预充金额</th>
+                            <th lay-data="{field:'treCount'}">②退款金额</th>
+                            <th lay-data="{field:'setCount'}">③补缴金额</th>
+                            <th lay-data="{field:'andCount'}">④销售额(=①-②+③)</th>
+                            <th lay-data="{field:'pusTimes'}">销售次数</th>
+                            <th lay-data="{field:'opt',align:'center'}">
+                                导出
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>6666666</td>
+                            <td>7777777</td>
+                            <td>双人车a</td>
+                            <td>上海</td>
+                            <td>锦秀中华</td>
+                            <td>1</td>
+                            <td>
+                                <a class="export layui-btn layui-btn-sm btn-form-theme-o">
+                                    <i class="icon iconfont icon-dc"></i>
+                                    导出
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>6666666</td>
+                            <td>7777777</td>
+                            <td>双人车a</td>
+                            <td>上海</td>
+                            <td>锦秀中华</td>
+                            <td>1</td>
+                            <td>
+                                <a class="export layui-btn layui-btn-sm btn-form-theme-o">
+                                    <i class="icon iconfont icon-dc"></i>
+                                    导出
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>6666666</td>
+                            <td>7777777</td>
+                            <td>双人车a</td>
+                            <td>上海</td>
+                            <td>锦秀中华</td>
+                            <td>1</td>
+                            <td>
+                                <a class="export layui-btn layui-btn-sm btn-form-theme-o">
+                                    <i class="icon iconfont icon-dc"></i>
+                                    导出
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>6666666</td>
+                            <td>7777777</td>
+                            <td>双人车a</td>
+                            <td>上海</td>
+                            <td>锦秀中华</td>
+                            <td>1</td>
+                            <td>
+                                <a class="export layui-btn layui-btn-sm btn-form-theme-o">
+                                    <i class="icon iconfont icon-dc"></i>
+                                    导出
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    var option = {
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['9月15', '9月20', '9月25', '9月30', '10月5', '10月10', '10月15','10月20']//数据填充
+        },
+        yAxis: {
+            type: 'value'
+        },
+        grid:{
+            left:'25',
+            top:'25',
+            right:'25',
+            bottom:'25'
+        },
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        series: [{
+            data: [40, 30, 40, 50, 30, 20, 10,20],//数据填充
+            type: 'line',
+            lineStyle:{
+                color:"#668DFF",
+                width:4
+            },
+            areaStyle: {
+                color:"#4977FC",
+                opacity:0.5
+            },
+            itemStyle: {
+                normal: {
+                    color: '#668DFF'
+                }
+            },
+            smooth:true
+        }]
+    };
+    $(function(){
+        var rchart=echarts.init($(".r-chart .r-content")[0]);
+        rchart.setOption(option);
+        layui.use('laydate', function(){
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#dateRange', //指定元素
+                range: true
+            });
+        });
+        layui.use('table', function(){
+            layui.table.init('xstj', {
+                height: $(".xstjTable").height(), //设置高度
+                limit:10000
+            });
+        })
+    })
+</script>
+</body>
+</html>

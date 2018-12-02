@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>代步车财务3-1</title>
+    <link rel="stylesheet" href="js/layui/css/layui.css">
+    <link rel="stylesheet" href="css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/layui/layui.js"></script>
+    <script src="js/common.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <header class="layui-header dbc_header">
+        <div class="nowdate">2018/8/26(节假日)</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="topBanner layui-nav">
+            <img class="logo" src="image/logo.png"/>
+            <div class="sysSelectBox layui-nav-item">
+                <div class="sysSelect">
+                    代步车管理
+                    <span class="layui-nav-more layui-icon layui-icon-down"></span>
+                </div>
+                <dl class="layui-nav-child">
+                    <dd class="sysOption"><a href="#">代步车管理</a></dd>
+                    <dd class="sysOption"><a href="#">财务管理</a></dd>
+                </dl>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item userInfo">
+                锦绣中华
+                <span class="layui-nav-more layui-icon layui-icon-down"></span>
+                <dl class="layui-nav-child">
+                    <dd><a href="#">基本资料</a></dd>
+                    <dd><a href="#">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a class="logout" href="javascript:"><i class="icon iconfont icon-power"></i>退出</a></li>
+        </ul>
+    </header>
+    <aside class="layui-side aside">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-collapse" lay-accordion lay-filter="aside">
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-ry"></i>人员管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li class="active"><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-jl"></i>交易记录</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li class="active"><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-jq"></i>景区管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-fy"></i>费用管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-clgl"></i>车辆管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-wxngl"></i>维修管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main class="layui-body">
+        <div>
+            <div class="jgsz">
+                <div class="queryBox">
+                    <div class="label font-theme">车 型:</div>
+                    <ul class="selectGroup">
+                        <li class="item active">全部</li>
+                        <li class="item">单人车</li>
+                        <li class="item">双人车</li>
+                        <li class="item">三人车</li>
+                    </ul>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="label font-theme" style="float: none;">日  期:</div>
+                    <ul class="selectGroup">
+                        <li class="item active">今天</li>
+                        <li class="item">昨天</li>
+                        <li class="item">最近七天</li>
+                        <li class="item">最近三十天</li>
+                    </ul>
+                    <input class="input dateRange" id="dateRange" placeholder="选择日期"/>
+                    &nbsp;&nbsp;
+                    <button class="layui-btn layui-btn-sm btn-theme queryBtn">查询</button>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="title">数据详情</div>
+            </div>
+            <div class="amount clearfix">
+                <ul class="u-money">
+                    <li style="float:left">
+                        <p>①预充金额（元）</p>
+                        <div class="shuju">20500,00</div>
+                    </li>
+                    <li style="float:left">
+                        <p>②退款金额</p>
+                        <div class="shuju">20500,00</div>
+                    </li>
+                    <li style="float:left">
+                        <p>③补缴金额</p>
+                        <div class="shuju">20500,00</div>
+                    </li>
+                    <li class="last" style="float:left">
+                        <p>④销售额(=①-②+③)（元）</p>
+                        <div class="shuju">20500,00</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="sjxqTable">
+                <table class="layui-table" lay-filter="sjxq">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'number'}">序号</th>
+                        <th lay-data="{field:'date'}">时间</th>
+                        <th lay-data="{field:'car'}">车号 </th>
+                        <th lay-data="{field:'phone'}">手机</th>
+                        <th lay-data="{field:'carType'}">车种</th>
+                        <th lay-data="{field:'preCount'}">①预充额</th>
+                        <th lay-data="{field:'retCount'}">②退款额</th>
+                        <th lay-data="{field:'setCount'}">③补缴额</th>
+                        <th lay-data="{field:'pusCount'}">④销售额</th>
+                        <th lay-data="{field:'state'}">交易状态</th>
+                        <th lay-data="{field:'gnum'}">账单号</th>
+                        <th lay-data="{field:'reason'}">退款原因</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>6666666</td>
+                        <td>7777777</td>
+                        <td>双人车a</td>
+                        <td>上海</td>
+                        <td>锦秀中华</td>
+                        <td>1</td>
+                        <td>6666666</td>
+                        <td>7777777</td>
+                        <td>双人车a</td>
+                        <td>上海</td>
+                        <td>锦秀中华</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>6666666</td>
+                        <td>7777777</td>
+                        <td>双人车a</td>
+                        <td>上海</td>
+                        <td>锦秀中华</td>
+                        <td>1</td>
+                        <td>6666666</td>
+                        <td>7777777</td>
+                        <td>双人车a</td>
+                        <td>上海</td>
+                        <td>锦秀中华</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+</div>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#dateRange', //指定元素
+            range: true
+        });
+    });
+    layui.use('table', function(){
+        layui.table.init('sjxq', {
+            height: $(".sjxqTable").height(), //设置高度
+            limit:10000
+        });
+    })
+</script>
+</body>
+</html>

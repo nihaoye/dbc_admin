@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>代步车财务1-1</title>
+    <link rel="stylesheet" href="js/layui/css/layui.css">
+    <link rel="stylesheet" href="css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/layui/layui.js"></script>
+    <script src="js/common.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <header class="layui-header dbc_header">
+        <div class="nowdate">2018/8/26(节假日)</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="topBanner layui-nav">
+            <img class="logo" src="image/logo.png"/>
+            <div class="sysSelectBox layui-nav-item">
+                <div class="sysSelect">
+                    代步车管理
+                    <span class="layui-nav-more layui-icon layui-icon-down"></span>
+                </div>
+                <dl class="layui-nav-child">
+                    <dd class="sysOption"><a href="#">代步车管理</a></dd>
+                    <dd class="sysOption"><a href="#">财务管理</a></dd>
+                </dl>
+            </div>
+        </div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item userInfo">
+                锦绣中华
+                <span class="layui-nav-more layui-icon layui-icon-down"></span>
+                <dl class="layui-nav-child">
+                    <dd><a href="#">基本资料</a></dd>
+                    <dd><a href="#">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a class="logout" href="javascript:"><i class="icon iconfont icon-power"></i>退出</a></li>
+        </ul>
+    </header>
+    <aside class="layui-side aside">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-collapse" lay-accordion lay-filter="aside">
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-ry"></i>人员管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li class="active"><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-jl"></i>交易记录</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li class="active"><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-jq"></i>景区管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-fy"></i>费用管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-clgl"></i>车辆管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="layui-colla-item">
+                    <h2 class="layui-colla-title"><i class="icon iconfont icon-wxngl"></i>维修管理</h2>
+                    <div class="layui-colla-content">
+                        <ul>
+                            <li><a href="#">价格设置</a></li>
+                            <li><a href="#">增加车型</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main class="layui-body">
+        <div class="cwry">
+            <div class="title">财务人员</div>
+            <div class="queryBox">
+                    <ul class="layui-form">
+                        <li class="inlineBlock">
+                            <label class="label">层 级:</label>
+                            <div class="inlineBlock">
+                                <div class="inlineBlock selectBox">
+                                    <select>
+                                        <option value="">全部</option>
+                                        <option value="1">一级管理员</option>
+                                        <option value="2">二级管理员</option>
+                                        <option value="3">三级管理员</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="inlineBlock">
+                            <label class="label">姓 名:</label>
+                            <div class="inlineBlock">
+                                <input class="input layui-input" placeholder="请输入姓名"/>
+                            </div>
+                        </li>
+                        <li class="inlineBlock">
+                            <label class="label">电 话:</label>
+                            <div class="inlineBlock">
+                                <input class="input layui-input" placeholder="请输入电话"/>
+                            </div>
+                        </li>
+                        <li class="inlineBlock">
+                            <label class="label">权 限:</label>
+                            <div class="inlineBlock">
+                                <input type="checkbox" name="" title="监控" lay-skin="primary">
+                                <input type="checkbox" name="" title="财务" lay-skin="primary">
+                                <input type="checkbox" name="" title="管理" lay-skin="primary">
+                            </div>
+                        </li>
+                        <li class="inlineBlock">
+                            <button type="button" class="layui-btn layui-btn-sm btn-form-theme">确 定</button>
+                        </li>
+                    </ul>
+                </div>
+            <div class="cwryBox">
+                <table class="layui-table" lay-filter="cwry">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'number'}">序号</th>
+                        <th lay-data="{field:'name'}">姓名 </th>
+                        <th lay-data="{field:'phone'}">手机号</th>
+                        <th lay-data="{field:'date'}">时间</th>
+                        <th lay-data="{field:'com'}">集团</th>
+                        <th lay-data="{field:'area'}">园区</th>
+                        <th lay-data="{field:'level'}">等级</th>
+                        <th lay-data="{field:'opt',align:'center'}">删除</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>6666666</td>
+                        <td>7777777</td>
+                        <td>双人车a</td>
+                        <td>上海</td>
+                        <td>锦秀中华</td>
+                        <td>锦秀中华</td>
+                        <td>
+                            <div class="layui-btn layui-btn-sm btn-form-theme-o delete">删除</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="title">人员历史</div>
+            <div class="rylsBox">
+                <table class="layui-table" lay-filter="ryls">
+                    <thead>
+                        <tr>
+                            <th lay-data="{field:'number'}">序号</th>
+                            <th lay-data="{field:'name'}">姓名 </th>
+                            <th lay-data="{field:'phone'}">手机号</th>
+                            <th lay-data="{field:'date'}">时间</th>
+                            <th lay-data="{field:'com'}">集团</th>
+                            <th lay-data="{field:'area'}">园区</th>
+                            <th lay-data="{field:'level'}">等级</th>
+                            <th lay-data="{field:'opt',align:'center'}">恢复</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>6666666</td>
+                        <td>7777777</td>
+                        <td>双人车a</td>
+                        <td>上海</td>
+                        <td>锦秀中华</td>
+                        <td>锦秀中华</td>
+                        <td>
+                            <div class="layui-btn layui-btn-sm btn-form-theme-o refair">恢复</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    layui.use('form', function() {
+        var form = layui.form;
+    });
+    layui.use('table', function(){
+        var cwryTable=layui.table.init('cwry', {
+            height: $(".cwryBox").height(), //设置高度
+            limit:10000
+        });
+        var rylsTable=layui.table.init('ryls', {
+            height: $(".rylsBox").height(), //设置高度
+            limit:10000
+        });
+    });
+    $(".cwryBox").on('click','.delete',function(){//用事件委托
+        console.log("删除逻辑")
+    })
+    $(".rylsBox").on('click','.refair',function(){//用事件委托
+        console.log("恢复逻辑")
+    })
+</script>
+</body>
+</html>
